@@ -1,7 +1,7 @@
-import re
-from datetime import date, datetime
-import argparse
-import os
+import re  # regular expresions
+from datetime import date, datetime  # to work with dates
+import argparse  # to define arguments in the input
+import os  # to work with paths and folders
 
 
 def save_results(data: dict, name_file: str):
@@ -29,7 +29,7 @@ def read(name: str) -> list:
             raise ValueError('"input_file" folder does not exist')
     except ValueError as ve:
         print(f"""ERROR: {ve}
-- create the folder "input_file" an put your file in there        
+-PLease, create the folder "input_file" an put your file in there        
         """)
         exit()
 
@@ -61,7 +61,7 @@ def split_date(date_hour: str) -> tuple[str, str]:
     return date_hour[0], date_hour[1]
 
 
-def get_hour(hour: date) -> tuple[date, date]:
+def get_hour(hour: str) -> tuple[date, date]:
     hour_in, hour_out = hour.split("-")
     try:
         hour_in = datetime.strptime(hour_in.lstrip().rstrip(), '%H:%M').time()
@@ -89,7 +89,7 @@ def overlap_time(date_in_1: date, date_out_1: date, date_in_2: date, date_out_2:
         return False
 
 
-def compare_hours(hour1, hour2):
+def compare_hours(hour1: str, hour2: str) -> bool:
     date_in_1, date_out_1 = get_hour(hour1)
     date_in_2, date_out_2 = get_hour(hour2)
     try:
@@ -100,7 +100,7 @@ def compare_hours(hour1, hour2):
     return overlap
 
 
-def get_coincidence(week1, week2):
+def get_coincidence(week1: list, week2: list) -> int:
     cont: int = 0
     for register1 in week1:
         for register2 in week2:
@@ -130,7 +130,7 @@ def to_compare_workers(workers: dict) -> dict:
             item = workers_name[i]+'-'+workers_name[j]
 
             print('\n * '+item)
-            number = get_coincidence(workers_week[i], workers_week[j])
+            number: int = get_coincidence(workers_week[i], workers_week[j])
             combination[item] = number
     return combination
 
@@ -139,16 +139,12 @@ def run(read_name):
     raw_data: list = read(read_name)
     workers: dict = clean_data(raw_data)
     compare: dict = to_compare_workers(workers)
-    print("""
-RESULTS:
-    """)
+    print("\nOUTPUT:\n")
     for item, value in compare.items():
         print(f'{item}: {value}')
 
     save_results(compare, read_name)
-    print("""
-The results was save, please check the folder that contains the program
-""")
+    print('\nThe output was save, please check the folder "results"')
 
 
 if __name__ == "__main__":
