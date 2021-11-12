@@ -1,4 +1,4 @@
-# exercise_ioet
+# exercise_ioet 
 Ioet exercise solution, made in Python by Brayan Lechon 
 
 Solucion al ejercicio de Ioet, hecho en Python por Brayan Lechon
@@ -12,7 +12,7 @@ Solucion al ejercicio de Ioet, hecho en Python por Brayan Lechon
   - [Solution Structure](#solution-structure)
   - [How Run localy](#how-run-localy)
     - [Requirements](#requirements)
-    - [Stheps to run](#stheps-to-run)
+    - [Steps to run](#steps-to-run)
     - [Recomendations](#recomendations)
   - [Example of execution](#example-of-execution)
 - [Version en Español](#version-en-español)
@@ -31,13 +31,13 @@ The company X offers their employees the flexibility to work the hours they want
 
 The goal of this exercise is to output a table containing pairs of employees and how often they have coincided in the office.
 ## Solution Structure
-
+![Diagrama en blanco](https://user-images.githubusercontent.com/75377942/141393119-c48c0ad1-1711-4bee-b600-a7c8829ff8f8.png)
 ## How Run localy
 ### Requirements
 - Python3 (3.9 or  superior)
 - The proyect not need external libraries because of that **requirements.txt** is empty
 
-### Stheps to run
+### Steps to run
 - Clone this repository in your local machine 
 - Open the Terminal (if you have windows open CMD)
 - Go to the path that cointains the repository files in your machine
@@ -63,7 +63,7 @@ Imput file with the register of the employers
 ![ejem1](https://user-images.githubusercontent.com/75377942/141385715-9d2ed8cc-ff72-4da8-9f96-547bb3b1ac6e.jpg)
 
 Execution of the code
-
+**`python3 main.py data`**
 
 ![ejem2](https://user-images.githubusercontent.com/75377942/141385727-4dd2da7c-8b87-4c46-8939-2a71ee71b590.png)
 
