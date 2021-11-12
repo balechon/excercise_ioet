@@ -3,10 +3,27 @@ Ioet exercise solution, made in Python by Brayan Lechon
 
 Solucion al ejercicio de Ioet, hecho en Python por Brayan Lechon
 
-**List of contents/ lista de contenidos**
+**Table of contents/ lista de contenidos**
 
-[TOC]
 
+- [exercise_ioet](#exercise_ioet)
+- [English version](#english-version)
+  - [Problem](#problem)
+  - [Solution Structure](#solution-structure)
+  - [How Run localy](#how-run-localy)
+    - [Requirements](#requirements)
+    - [Stheps to run](#stheps-to-run)
+    - [Recomendations](#recomendations)
+  - [Example of execution](#example-of-execution)
+- [Version en Español](#version-en-español)
+  - [Problema](#problema)
+  - [Estructura de la Solucion](#estructura-de-la-solucion)
+  - [Instrucciones de Ejecucion](#instrucciones-de-ejecucion)
+    - [Requisitos](#requisitos)
+    - [Pasos](#pasos)
+    - [Recomendaciones](#recomendaciones)
+  - [Ejemplo de ejecucion](#ejemplo-de-ejecucion)
+  
 
 # English version
 ## Problem
@@ -36,7 +53,7 @@ The goal of this exercise is to output a table containing pairs of employees and
 ### Recomendations
 - Be shure that your input file is in the ***"input_file"*** folder
 - The extension of the input file is **.txt**
-- Follow the next structure to register the hours of the workers
+- Follow the next structure to register the hours of the workers in the input file
   
 ![structure](https://user-images.githubusercontent.com/75377942/141385730-c09f4c8a-4898-4aeb-9d68-39bd9ee3f080.jpg)
 
@@ -45,7 +62,7 @@ Imput file with the register of the employers
 
 ![ejem1](https://user-images.githubusercontent.com/75377942/141385715-9d2ed8cc-ff72-4da8-9f96-547bb3b1ac6e.jpg)
 
-Ejecute of the code
+Execution of the code
 
 
 ![ejem2](https://user-images.githubusercontent.com/75377942/141385727-4dd2da7c-8b87-4c46-8939-2a71ee71b590.png)
