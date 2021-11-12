@@ -55,13 +55,13 @@ def clean_data(raw_data: list) -> dict:
     return workers
 
 
-def split_date(date_hour: str) -> tuple[str, str]:
+def split_date(date_hour: str):
     date_hour = re.split('(\d.*)', date_hour)
     date_hour.pop()
     return date_hour[0], date_hour[1]
 
 
-def get_hour(hour: str) -> tuple[date, date]:
+def get_hour(hour: str):
     hour_in, hour_out = hour.split("-")
     try:
         hour_in = datetime.strptime(hour_in.lstrip().rstrip(), '%H:%M').time()
