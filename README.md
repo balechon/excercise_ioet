@@ -31,7 +31,7 @@ The company X offers their employees the flexibility to work the hours they want
 
 The goal of this exercise is to output a table containing pairs of employees and how often they have coincided in the office.
 ## Solution Structure
-![Diagrama en blanco](https://user-images.githubusercontent.com/75377942/141393119-c48c0ad1-1711-4bee-b600-a7c8829ff8f8.png)
+![flow chart](https://user-images.githubusercontent.com/75377942/141394401-deec8b54-734b-4045-a65f-3753eaee9850.png)
 ## How Run localy
 ### Requirements
 - Python3 (3.9 or  superior)
