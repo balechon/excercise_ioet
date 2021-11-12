@@ -59,16 +59,16 @@ The goal of this exercise is to output a table containing pairs of employees and
 ## Execution Example 
 
 * Imput file **data.txt** with the register of the employers
-![ejem1](https://user-images.githubusercontent.com/75377942/141385715-9d2ed8cc-ff72-4da8-9f96-547bb3b1ac6e.jpg)
+![image](https://user-images.githubusercontent.com/75377942/141492631-ad3d1a90-9ed4-44cd-a106-d28ef58c1f62.png)
 **Reminder:** This file needs to be in the ***input_file*** folder
 
 * In the terminal execution of the code
 **`python3 main.py data`**
-![ejem2](https://user-images.githubusercontent.com/75377942/141385727-4dd2da7c-8b87-4c46-8939-2a71ee71b590.png)
+![screen2](https://user-images.githubusercontent.com/75377942/141493220-0848b4f2-0247-4345-a6a9-206a551400ff.jpg)
 The program shows the coincidence hours and the output table solution. 
 
 - Finally the output table is saved in a .txt file in the ***results*** folder
-![ejem3](https://user-images.githubusercontent.com/75377942/141385653-1a004a3c-eb96-461d-8899-da107f831a54.jpg)
+![Screen3](https://user-images.githubusercontent.com/75377942/141493453-2478885e-09e8-4e3e-8a4b-44b6776f9b3b.jpg)
 
 # Version en Español
 ## Problema
