@@ -144,7 +144,7 @@ def run(read_name):
         print(f'{item}: {value}')
 
     save_results(compare, read_name)
-    print('\nThe output was save, please check the folder "results"')
+    print('\nThe output was save, please check the "results" folder')
 
 
 if __name__ == "__main__":
