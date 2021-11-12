@@ -115,7 +115,7 @@ El objetivo de este ejercicio es obtener una tabla que contenga el par de emplea
 
 - Archivo ***data.txt*** con los registros de los empleados
   
-  ![structure](https://user-images.githubusercontent.com/75377942/141385730-c09f4c8a-4898-4aeb-9d68-39bd9ee3f080.jpg)
+  ![image](https://user-images.githubusercontent.com/75377942/141492631-ad3d1a90-9ed4-44cd-a106-d28ef58c1f62.png)
 
 Recordatorio: El archivo debe estar en la carpeta ***input_files***
 - Ejecucion del programa en la Terminal con el comando
