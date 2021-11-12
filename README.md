@@ -1,5 +1,5 @@
 # exercise_ioet 
-Ioet exercise solution, made in Python by Brayan Lechon 
+Ioet's exercise solution, made in Python by Brayan Lechon 
 
 Solucion al ejercicio de Ioet, hecho en Python por Brayan Lechon
 
@@ -14,24 +14,24 @@ Solucion al ejercicio de Ioet, hecho en Python por Brayan Lechon
     - [Requirements](#requirements)
     - [Steps to run](#steps-to-run)
     - [Recomendations](#recomendations)
-  - [Example of execution](#example-of-execution)
+  - [Execution Example](#execution-example)
 - [Version en Español](#version-en-español)
   - [Problema](#problema)
   - [Estructura de la Solucion](#estructura-de-la-solucion)
   - [Instrucciones de Ejecucion](#instrucciones-de-ejecucion)
-    - [Requisitos](#requisitos)
-    - [Pasos](#pasos)
+    - [Requerimientos](#requerimientos)
+    - [Pasos para ejecutar el programa](#pasos-para-ejecutar-el-programa)
     - [Recomendaciones](#recomendaciones)
-  - [Ejemplo de ejecucion](#ejemplo-de-ejecucion)
+  - [Ejemplo de ejecución](#ejemplo-de-ejecución)
   
-
 # English version
+
 ## Problem
 The company X offers their employees the flexibility to work the hours they want. But due to some external circumstances they need to know what employees have been at the office within the same time frame
 
 The goal of this exercise is to output a table containing pairs of employees and how often they have coincided in the office.
 ## Solution Structure
-![flow chart](https://user-images.githubusercontent.com/75377942/141394401-deec8b54-734b-4045-a65f-3753eaee9850.png)
+![flowchart](https://user-images.githubusercontent.com/75377942/141475995-ffeeb633-df92-4ad3-8df7-a9c2238ce058.png)
 ## How Run localy
 ### Requirements
 - Python3 (3.9 or  superior)
@@ -54,37 +54,67 @@ The goal of this exercise is to output a table containing pairs of employees and
 - Be shure that your input file is in the ***"input_file"*** folder
 - The extension of the input file is **.txt**
 - Follow the next structure to register the hours of the workers in the input file
-  
 ![structure](https://user-images.githubusercontent.com/75377942/141385730-c09f4c8a-4898-4aeb-9d68-39bd9ee3f080.jpg)
 
-## Example of execution
-Imput file with the register of the employers
+## Execution Example 
 
+* Imput file **data.txt** with the register of the employers
 ![ejem1](https://user-images.githubusercontent.com/75377942/141385715-9d2ed8cc-ff72-4da8-9f96-547bb3b1ac6e.jpg)
+**Reminder:** This file needs to be in the ***input_file*** folder
 
-Execution of the code
+* In the terminal execution of the code
 **`python3 main.py data`**
-
 ![ejem2](https://user-images.githubusercontent.com/75377942/141385727-4dd2da7c-8b87-4c46-8939-2a71ee71b590.png)
+The program shows the coincidence hours and the output table solution. 
 
-The program shows the matches hours and the output solution. Finally the output is saved in a .txt file in the result folder
-
+- Finally the output table is saved in a .txt file in the ***results*** folder
 ![ejem3](https://user-images.githubusercontent.com/75377942/141385653-1a004a3c-eb96-461d-8899-da107f831a54.jpg)
 
 # Version en Español
 ## Problema
 
+La compania X ofrece a sus empleados la flexibilidad de trabajar las horas que deseen. Pero por alguna razon ellos necesitan saber que empleados estivieron en la oficina al mismo tiempo
+
+El objetivo de este ejercicio es obtener una tabla que contenga el par de empleados y cuantas veces coincidieron en la oficina.
 ## Estructura de la Solucion
-
+![flujo](https://user-images.githubusercontent.com/75377942/141477708-5bf6f5f6-92ca-415d-a544-ec44ca1cd4e1.png)
 ## Instrucciones de Ejecucion
+### Requerimientos
+- Python3 (3.9 o  superior)
+- El proyecto no necesita librerias externas por ello el archivo **requirements.txt** esta vacio.
 
-### Requisitos
-
-### Pasos
+### Pasos para ejecutar el programa
+- Clona este repositorio en una carpeta en tu equipo local
+- Abrir la terminal (si tienes Windows abrir el CMD)
+- Cambiar el directorio apuntando a la carpeta que contenga los archivos del repositorio
+- Ejecuta el comando:
+	- en Windows:
+	**`py main.py "name_file"`**
+	
+	- en Unix(Linux o Mac):  
+	**`python3 main.py "nombre_archivo"`**
+	
+	**nombre_archivo** = el nombre del archivo que contiene el registro de los empleados, el repositorio contiene un archivo de ejemplo llamado ***data.txt***
 
 ### Recomendaciones
+- Asegurate que tu archivo de registros se encuentra en la carpeta ***"input_file"***
+- La extension del archivo de registro tiene que ser **.txt**
+- La estructura para registrar las horas de los empleados es la siguiente:
+![structure](https://user-images.githubusercontent.com/75377942/141385730-c09f4c8a-4898-4aeb-9d68-39bd9ee3f080.jpg)
 
-## Ejemplo de ejecucion
+
+## Ejemplo de ejecución
+
+- Archivo ***data.txt*** con los registros de los empleados
+![ejem1](https://user-images.githubusercontent.com/75377942/141385715-9d2ed8cc-ff72-4da8-9f96-547bb3b1ac6e.jpg)
+Recordatorio: El archivo debe estar en la carpeta ***input_files***
+- Ejecucion del programa en la Terminal con el comando
+**`python3 main.py data`**
+![ejem2](https://user-images.githubusercontent.com/75377942/141385727-4dd2da7c-8b87-4c46-8939-2a71ee71b590.png)
+El programa muestra las horas en la que los empleados han coincidido y la tabla con los resultados
+
+- Finalmente la salida es guardada en un archivo .txt en la carpeta de ***results***.
+![ejem3](https://user-images.githubusercontent.com/75377942/141385653-1a004a3c-eb96-461d-8899-da107f831a54.jpg)
 
 
 
