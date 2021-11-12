@@ -5,14 +5,14 @@ import os  # to work with paths and folders
 
 
 def save_results(data: dict, name_file: str):
-    run_date = datetime.today().strftime('%d-%m-%Y')
+
     if len(name_file.split('.')) > 1:
         name_file = name_file.split('.')[0]
 
     if not os.path.isdir('results'):
         os.mkdir('results')
 
-    with open(f'./results/{name_file}_results_{run_date}.txt', 'w', encoding='utf-8') as f:
+    with open(f'./results/{name_file}_results.txt', 'w', encoding='utf-8') as f:
         for pair, value in data.items():
             f.write(f'{pair}: {value}')
             f.write('\n')
