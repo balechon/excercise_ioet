@@ -48,10 +48,13 @@ def read(name: str) -> list:
 
 def clean_data(raw_data: list) -> dict:
     workers = {}
+    
     for worker in raw_data:
-        name, days = worker.split('=')
-        days = days.split(',')
-        workers[name] = days
+        name, week_list = worker.split('=')
+        hour = re.split(r',*[A-Z]+', week_list)[1:]
+        day = re.split(r'[0-9]+[,:-]*',week_list)
+        day=list(filter(lambda x: x!="",day))
+        workers[name] = dict(zip(day, hour))
     return workers
 
 

@@ -1,2 +1,4 @@
 env/
 .vscode
+workers.py
+cristal_box.py
