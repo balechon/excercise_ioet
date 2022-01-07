@@ -2,3 +2,4 @@ env/
 .vscode
 workers.py
 cristal_box.py
+x.py

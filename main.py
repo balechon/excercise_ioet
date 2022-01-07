@@ -2,6 +2,7 @@ import re  # regular expresions
 from datetime import date, datetime  # to work with dates
 import argparse  # to define arguments in the input
 import os  # to work with paths and folders
+from itertools import combinations
 
 
 def save_results(data: dict, name_file: str):
@@ -48,20 +49,14 @@ def read(name: str) -> list:
 
 def clean_data(raw_data: list) -> dict:
     workers = {}
-    
+
     for worker in raw_data:
         name, week_list = worker.split('=')
         hour = re.split(r',*[A-Z]+', week_list)[1:]
-        day = re.split(r'[0-9]+[,:-]*',week_list)
-        day=list(filter(lambda x: x!="",day))
+        day = re.split(r'[0-9]+[,:-]*', week_list)
+        day = list(filter(lambda x: x != "", day))
         workers[name] = dict(zip(day, hour))
     return workers
-
-
-def split_date(date_hour: str):
-    date_hour = re.split('(\d.*)', date_hour)
-    date_hour.pop()
-    return date_hour[0], date_hour[1]
 
 
 def get_hour(hour: str):
@@ -76,20 +71,17 @@ def get_hour(hour: str):
 
 
 def overlap_time(date_in_1: date, date_out_1: date, date_in_2: date, date_out_2: date) -> bool:
-    cont: int = 0
-    if(date_in_2 <= date_in_1 <= date_out_2):
-        cont = cont+1
-    elif(date_in_2 <= date_out_1 <= date_out_2):
-        cont = cont+1
-    elif(date_in_1 <= date_in_2 <= date_out_1):
-        cont = cont+1
-    elif(date_in_1 <= date_out_2 <= date_out_1):
-        cont = cont+1
 
-    if cont > 0:
+    if(date_in_2 <= date_in_1 <= date_out_2):
         return True
-    else:
-        return False
+    elif(date_in_2 <= date_out_1 <= date_out_2):
+        return True
+    elif(date_in_1 <= date_in_2 <= date_out_1):
+        return True
+    elif(date_in_1 <= date_out_2 <= date_out_1):
+        return True
+
+    return False
 
 
 def compare_hours(hour1: str, hour2: str) -> bool:
@@ -103,38 +95,25 @@ def compare_hours(hour1: str, hour2: str) -> bool:
     return overlap
 
 
-def get_coincidence(week1: list, week2: list) -> int:
+def get_coincidence(week1: dict, week2: dict) -> int:
     cont: int = 0
-    for register1 in week1:
-        for register2 in week2:
-            day1, hour1 = split_date(register1)
-            day2, hour2 = split_date(register2)
+    days_worker = list(week1.keys())
 
-            if day1 != day2:
-                continue
-            if compare_hours(hour1, hour2):
-                print(f'- coincidence at {day1}: {hour1} - {hour2}')
-                cont = cont+1
-            else:
-                # print('the two workers not coincidence')
-                cont = cont+0
+    for day in days_worker:
+        if day in list(week2.keys()):
+            cont += compare_hours(week1[day], week2[day])
     return cont
 
 
 def to_compare_workers(workers: dict) -> dict:
     workers_name: list = list(workers.keys())
-    workers_week: list = list(workers.values())
-
     combination: dict = {}
-    for i in range(0, len(workers_name)):
-        for j in range(0, len(workers_name)):
-            if i == j or i > j:
-                continue
-            item = workers_name[i]+'-'+workers_name[j]
+    
+    for worker_a, worker_b in combinations(workers_name, 2):
+        item = str(worker_a+"-"+worker_b)
+        number: int = get_coincidence(workers[worker_a], workers[worker_b])
+        combination[item] = number
 
-            print('\n * '+item)
-            number: int = get_coincidence(workers_week[i], workers_week[j])
-            combination[item] = number
     return combination
 
 
@@ -146,8 +125,8 @@ def run(read_name):
     for item, value in compare.items():
         print(f'{item}: {value}')
 
-    save_results(compare, read_name)
-    print('\nThe output was save, please check the "results" folder')
+    # save_results(compare, read_name)
+    # print('\nThe output was save, please check the "results" folder')
 
 
 if __name__ == "__main__":
