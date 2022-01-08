@@ -2,11 +2,18 @@ import re  # regular expresions
 from datetime import date, datetime  # to work with dates
 import argparse  # to define arguments in the input
 import os  # to work with paths and folders
-from itertools import combinations
+from itertools import combinations # combinations method 
 
 
 def save_results(data: dict, name_file: str):
+    """save a dictionarie in a txt file
 
+    Args:
+        data (dict): the dictionary input
+        name_file (str): the name of the txt file
+    Return:
+        the function doesn't have a return variable 
+    """
     if len(name_file.split('.')) > 1:
         name_file = name_file.split('.')[0]
 
@@ -20,8 +27,23 @@ def save_results(data: dict, name_file: str):
 
 
 def read(name: str) -> list:
-    raw_data = []
 
+    """ read a txt file and put the lines in a list
+    
+    Args:
+        name(str): the input txt file
+
+    Return:
+        raw_data(list): all the lines of the input txt file
+
+    Exceptions:
+        the execption raise when the file doesn't exist in the input_file folder
+        the expection raise when the file is not a txt file
+    
+    """    
+    
+    raw_data = []
+    
     if len(name.split('.')) > 1:
         name = name.split('.')[0]
 
@@ -48,6 +70,18 @@ def read(name: str) -> list:
 
 
 def clean_data(raw_data: list) -> dict:
+
+    """ transform the data in a dictionary structure
+
+    
+    {NAME: {DAY:HOUR,DAY:HOUR},NAME:{DAY:HOUR,DAY:HOUR}}
+
+
+    Returns: 
+        workers (dict):  A dictionary of dictionaries
+    
+    """
+
     workers = {}
 
     for worker in raw_data:
@@ -60,6 +94,14 @@ def clean_data(raw_data: list) -> dict:
 
 
 def get_hour(hour: str):
+    """transform the string hour to a datatype
+
+    Args:
+        hour (str): variable with the hour information
+
+    Returns: 
+       (hour_in, hour_out): a tuple with the times
+    """
     hour_in, hour_out = hour.split("-")
     try:
         hour_in = datetime.strptime(hour_in.lstrip().rstrip(), '%H:%M').time()
@@ -71,7 +113,17 @@ def get_hour(hour: str):
 
 
 def overlap_time(date_in_1: date, date_out_1: date, date_in_2: date, date_out_2: date) -> bool:
+    """Compare two ranges of times and return True if get a have coincidence
 
+    Args:
+        date_in_1 (date): initial hour of the first worker
+        date_out_1 (date): end hour of the first worker
+        date_in_2 (date): initial hour of the second worker
+        date_out_2 (date): end hour of the second worker
+
+    Returns:
+        bool: indicator if exist a coincidence
+    """
     if(date_in_2 <= date_in_1 <= date_out_2):
         return True
     elif(date_in_2 <= date_out_1 <= date_out_2):
@@ -85,6 +137,18 @@ def overlap_time(date_in_1: date, date_out_1: date, date_in_2: date, date_out_2:
 
 
 def compare_hours(hour1: str, hour2: str) -> bool:
+    """[summary]
+
+    Args:
+        hour1 (str): [description]
+        hour2 (str): [description]
+
+    Returns:
+        bool: [description]
+
+    Exception:
+        if the inputs doesn't have the correct structure return false 
+    """
     date_in_1, date_out_1 = get_hour(hour1)
     date_in_2, date_out_2 = get_hour(hour2)
     try:
@@ -96,6 +160,15 @@ def compare_hours(hour1: str, hour2: str) -> bool:
 
 
 def get_coincidence(week1: dict, week2: dict) -> int:
+
+    """[summary]
+
+    Args:
+
+    Returns:
+        cont(int): the count of the coincidences
+    """
+
     cont: int = 0
     days_worker = list(week1.keys())
 
@@ -106,9 +179,16 @@ def get_coincidence(week1: dict, week2: dict) -> int:
 
 
 def to_compare_workers(workers: dict) -> dict:
+
+    """make the comparotions of the worjers
+
+    Returns:
+        combination(dict): pair of workers and the coincidence they have
+    """
+
     workers_name: list = list(workers.keys())
     combination: dict = {}
-    
+
     for worker_a, worker_b in combinations(workers_name, 2):
         item = str(worker_a+"-"+worker_b)
         number: int = get_coincidence(workers[worker_a], workers[worker_b])
@@ -118,6 +198,13 @@ def to_compare_workers(workers: dict) -> dict:
 
 
 def run(read_name):
+    """principal function 
+
+    Args:
+        read_name (str): the name of the raw data file 
+    Return:
+        The function doesn't return any variables
+    """
     raw_data: list = read(read_name)
     workers: dict = clean_data(raw_data)
     compare: dict = to_compare_workers(workers)
@@ -125,8 +212,8 @@ def run(read_name):
     for item, value in compare.items():
         print(f'{item}: {value}')
 
-    # save_results(compare, read_name)
-    # print('\nThe output was save, please check the "results" folder')
+    save_results(compare, read_name)
+    print('\nThe output was save, please check the "results" folder')
 
 
 if __name__ == "__main__":
