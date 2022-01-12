@@ -8,11 +8,15 @@ from itertools import combinations # combinations method
 def save_results(data: dict, name_file: str):
     """save a dictionarie in a txt file
 
+
     Args:
-        data (dict): the dictionary input
-        name_file (str): the name of the txt file
+        data (dict): the dictionary input. 
+        e.g. {'BRAYAN':0,'LUIS':3,'MARIA':5}
+
+        name_file (str): the name of the output txt file
     Return:
-        the function doesn't have a return variable 
+        the function doesn't have a return variable
+        the function create or rewrite a file if have the same name 
     """
     if len(name_file.split('.')) > 1:
         name_file = name_file.split('.')[0]
@@ -71,10 +75,16 @@ def read(name: str) -> list:
 
 def clean_data(raw_data: list) -> dict:
 
-    """ transform the data in a dictionary structure
+    """ transform the data input in a dictionary of dictionaries structure
 
+    structure of the dictionary return
+
+    {'NAME': {'DAY':HOUR,DAY:HOUR},NAME:{DAY:HOUR,DAY:HOUR}}
     
-    {NAME: {DAY:HOUR,DAY:HOUR},NAME:{DAY:HOUR,DAY:HOUR}}
+
+    e.g
+    input: []
+    ouput: 
 
 
     Returns: 
@@ -94,7 +104,7 @@ def clean_data(raw_data: list) -> dict:
 
 
 def get_hour(hour: str):
-    """transform the string hour to a datatype
+    """transform a string to datatype
 
     Args:
         hour (str): variable with the hour information
@@ -113,7 +123,7 @@ def get_hour(hour: str):
 
 
 def overlap_time(date_in_1: date, date_out_1: date, date_in_2: date, date_out_2: date) -> bool:
-    """Compare two ranges of times and return True if get a have coincidence
+    """Compare two ranges of times and return a boolean
 
     Args:
         date_in_1 (date): initial hour of the first worker
@@ -122,7 +132,8 @@ def overlap_time(date_in_1: date, date_out_1: date, date_in_2: date, date_out_2:
         date_out_2 (date): end hour of the second worker
 
     Returns:
-        bool: indicator if exist a coincidence
+        (bool): True -> if have coicidence in the conditionals
+                False -> if not have coincidence in the conditionals
     """
     if(date_in_2 <= date_in_1 <= date_out_2):
         return True
@@ -137,14 +148,14 @@ def overlap_time(date_in_1: date, date_out_1: date, date_in_2: date, date_out_2:
 
 
 def compare_hours(hour1: str, hour2: str) -> bool:
-    """[summary]
+    """get two ranges of hours and return a boolean variable
 
     Args:
         hour1 (str): [description]
         hour2 (str): [description]
 
     Returns:
-        bool: [description]
+        overlap(bool): get the value acording the overlap_time funciton result
 
     Exception:
         if the inputs doesn't have the correct structure return false 
@@ -161,10 +172,14 @@ def compare_hours(hour1: str, hour2: str) -> bool:
 
 def get_coincidence(week1: dict, week2: dict) -> int:
 
-    """[summary]
+    """ count the numbers of coindicence between two workers schedule 
+        represented in a dictionarie datastructure
+        
+
 
     Args:
-
+        week1(dict):  a worker schedule dictionarie 
+        week2(dict): a worker schedule dictionarie
     Returns:
         cont(int): the count of the coincidences
     """
@@ -180,10 +195,14 @@ def get_coincidence(week1: dict, week2: dict) -> int:
 
 def to_compare_workers(workers: dict) -> dict:
 
-    """make the comparotions of the worjers
+    """compare all workers and return the results in a dictionary
+
+    Args:
+        workers(dict): a dictionary of dictionaries structure that represent
+                       the worker name and schedule of the week
 
     Returns:
-        combination(dict): pair of workers and the coincidence they have
+        combination(dict): pair of workers and the coincidence that they have
     """
 
     workers_name: list = list(workers.keys())
@@ -198,7 +217,7 @@ def to_compare_workers(workers: dict) -> dict:
 
 
 def run(read_name):
-    """principal function 
+    """principal function with the main procces
 
     Args:
         read_name (str): the name of the raw data file 
@@ -213,7 +232,7 @@ def run(read_name):
         print(f'{item}: {value}')
 
     save_results(compare, read_name)
-    print('\nThe output was save, please check the "results" folder')
+    print('\nThe output was saved, please check the "results" folder')
 
 
 if __name__ == "__main__":
