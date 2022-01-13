@@ -2,7 +2,7 @@ import re  # regular expresions
 from datetime import date, datetime  # to work with dates
 import argparse  # to define arguments in the input
 import os  # to work with paths and folders
-from itertools import combinations # combinations method 
+from itertools import combinations  # combinations methods
 
 
 def save_results(data: dict, name_file: str):
@@ -31,9 +31,8 @@ def save_results(data: dict, name_file: str):
 
 
 def read(name: str) -> list:
-
     """ read a txt file and put the lines in a list
-    
+
     Args:
         name(str): the input txt file
 
@@ -43,11 +42,11 @@ def read(name: str) -> list:
     Exceptions:
         the execption raise when the file doesn't exist in the input_file folder
         the expection raise when the file is not a txt file
-    
-    """    
-    
+
+    """
+
     raw_data = []
-    
+
     if len(name.split('.')) > 1:
         name = name.split('.')[0]
 
@@ -74,13 +73,12 @@ def read(name: str) -> list:
 
 
 def clean_data(raw_data: list) -> dict:
-
     """ transform the data input in a dictionary of dictionaries structure
 
     structure of the dictionary return
 
     {'NAME': {'DAY':HOUR,DAY:HOUR},NAME:{DAY:HOUR,DAY:HOUR}}
-    
+
 
     e.g
     input: []
@@ -89,7 +87,7 @@ def clean_data(raw_data: list) -> dict:
 
     Returns: 
         workers (dict):  A dictionary of dictionaries
-    
+
     """
 
     workers = {}
@@ -171,10 +169,9 @@ def compare_hours(hour1: str, hour2: str) -> bool:
 
 
 def get_coincidence(week1: dict, week2: dict) -> int:
-
     """ count the numbers of coindicence between two workers schedule 
         represented in a dictionarie datastructure
-        
+
 
 
     Args:
@@ -194,7 +191,6 @@ def get_coincidence(week1: dict, week2: dict) -> int:
 
 
 def to_compare_workers(workers: dict) -> dict:
-
     """compare all workers and return the results in a dictionary
 
     Args:
@@ -224,8 +220,11 @@ def run(read_name):
     Return:
         The function doesn't return any variables
     """
-    raw_data: list = read(read_name)
+    # read the txt file and put in a list
+    raw_data: list = read(read_name)  
+    # put the initial list in a more flexible data structure
     workers: dict = clean_data(raw_data)
+    # get the pair worker and hours coincidence
     compare: dict = to_compare_workers(workers)
     print("\nOUTPUT:\n")
     for item, value in compare.items():
