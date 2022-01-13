@@ -1,40 +1,21 @@
-import random
+from main import *
 
-def busqueda_binaria(lista, comienzo, final, objetivo):
-    print(f'buscando {objetivo} entre {lista[comienzo]} y {lista[final - 1]}')
-    if comienzo > final:
-        return False
+class Test_clean_data:
 
-    medio = (comienzo + final) // 2
+    def test_one(self):
+        input = ["ASTRID=MO10:00-12:00,TH12:00-14:00",
+                "ANDRES=SU20:00-21:00"]
+        result = {'ASTRID': {'MO': '10:00-12:00', 'TH': '12:00-14:00'},
+                'ANDRES': {'SU': '20:00-21:00'}}
+        assert clean_data(input)==result
 
-    if lista[medio] == objetivo:
-        return True
-    elif lista[medio] < objetivo:
-        return busqueda_binaria(lista, medio + 1, final, objetivo)
-    else:
-        return busqueda_binaria(lista, comienzo, medio - 1, objetivo)
+class Test_to_compare_workers:
+    def test_one(self):
+        input = {'ASTRID': {'MO': '10:00-12:00', 'TH': '12:00-14:00'},
+                 'ANDRES': {'SU': '20:00-21:00'}}
+        assert to_compare_workers(input)=={'ASTRID-ANDRES':0}
 
-
-def binarie_search(objetivo, list_to_compare, start_list, end_list):
-
-    if start_list > end_list:
-        return False
-
-    ind = (start_list+end_list)//2
-    if list_to_compare[ind] == objetivo:
-        return True
-    elif list_to_compare[ind] < objetivo:
-        return binarie_search(objetivo, list_to_compare, ind+1, end_list)
-    else:
-        return binarie_search(objetivo, list_to_compare, start_list, ind-1)
-
-if __name__ == '__main__':
-    tamano_de_lista = int(input('De que tamano es la lista? '))
-    objetivo = int(input('Que numero quieres encontrar? '))
-
-    lista = sorted([random.randint(0, 100) for i in range(tamano_de_lista)])
-
-    encontrado = busqueda_binaria(lista, 0, len(lista), objetivo)
-
-    print(lista)
-    print(f'El elemento {objetivo} {"esta" if encontrado else "no esta"} en la lista')
+    def test_two(self):
+        input = {'ASTRID': {'MO': '10:00-12:00', 'TH': '12:00-14:00'},
+                 'ANDRES': {'MO': '10:00-19:00'}}
+        assert to_compare_workers(input)=={'ASTRID-ANDRES':1}
